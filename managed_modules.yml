@@ -1,0 +1,16 @@
+---
+- puppet-apticron
+- puppet-bash
+- puppet-common
+- puppet-denyhosts
+- puppet-fail2ban
+- puppet-hosts
+- puppet-metche
+- puppet-ntp
+- puppet-openvpn
+- puppet-postfix
+- puppet-puppet
+- puppet-resolv
+- puppet-screen
+- puppet-ssh
+- puppet-vim

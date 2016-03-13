@@ -1,0 +1,5 @@
+---
+git_base: 'github@debian-solutions.de:'
+namespace: dhoppe
+branch: develop
+message: "Update based on dhoppe/modulesync_config"
