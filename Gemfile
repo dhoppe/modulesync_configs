@@ -1,7 +1,7 @@
 source ENV['GEM_SOURCE'] || 'https://rubygems.org'
 
 group :test do
-  gem 'rake',
+  gem 'rake'
   gem 'rubocop', '~> 0.38'
 end
 
