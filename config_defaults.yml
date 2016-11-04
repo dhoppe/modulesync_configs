@@ -24,9 +24,14 @@
 Gemfile:
   required:
     ':test':
+      - gem: json_pure
+        version: '<= 2.0.1'
+        ruby-operator: '<'
+        ruby-version: '2.0.0'
       - gem: metadata-json-lint
+      - gem: mocha
+        version: '>= 1.2.1'
       - gem: puppet-blacksmith
-        git: https://github.com/voxpupuli/puppet-blacksmith.git
       - gem: puppet-lint-absolute_classname-check
       - gem: puppet-lint-classes_and_types_beginning_with_digits-check
       - gem: puppet-lint-leading_zero-check
@@ -35,25 +40,26 @@ Gemfile:
       - gem: puppet-lint-variable_contains_upcase
       - gem: puppet-lint-version_comparison-check
       - gem: puppet-strings
-        git: https://github.com/puppetlabs/puppetlabs-strings.git
+        version: '~> 0.99.0'
       - gem: puppetlabs_spec_helper
-      - gem: rake
-      - gem: rspec
+        version: '~> 1.2.2'
       - gem: rspec-puppet
-        git: https://github.com/rodjek/rspec-puppet.git
+        version: '~> 2.5'
       - gem: rspec-puppet-facts
       - gem: rspec-puppet-utils
-      - gem: rubocop
-        version: '~> 0.38'
+      - gem: rubocop-rspec
+        version: '~> 1.6'
+        ruby-operator: '>='
+        ruby-version: '2.3.0'
     ':development':
       - gem: guard-rake
       - gem: travis
       - gem: travis-lint
     ':system_tests':
-      - gem: beaker
       - gem: beaker-rspec
       - gem: beaker-puppet_install_helper
         require: false
+      - gem: serverspec
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
