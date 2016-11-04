@@ -30,7 +30,7 @@ RSpec.configure do |c|
 end
 
 <%- [@configs['spec_overrides']].flatten.compact.each do |line| -%>
- <%= line %>
+<%= line %>
 <%- end -%>
 
 # vim: syntax=ruby
