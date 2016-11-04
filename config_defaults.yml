@@ -3,31 +3,38 @@
   includes:
   - rvm: 1.9.3
     env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" CHECK=test
-  - rvm: 2.1.8
-    env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" CHECK=test
   - rvm: 1.9.3
-    env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" CHECK=test FUTURE_PARSER=yes
-  - rvm: 2.1.8
-    env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" CHECK=test FUTURE_PARSER=yes
-  - rvm: 2.1.8
-    env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes" CHECK=test
-  - rvm: 2.2.4
-    env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes" CHECK=test
-  - rvm: 2.2.4
-    env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes" CHECK=rubocop
-  - rvm: 2.3.0
-    env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes" CHECK=test
+    env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" FUTURE_PARSER="yes" CHECK=test
+  - rvm: 2.1.9
+    env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" CHECK=test
+  - rvm: 2.1.9
+    env: PUPPET_VERSION="~> 4.0" CHECK=test
+  - rvm: 2.2.5
+    env: PUPPET_VERSION="~> 4.0" CHECK=test
+  - rvm: 2.3.1
+    env: PUPPET_VERSION="~> 4.0" CHECK=build DEPLOY_TO_FORGE=yes
+  - rvm: 2.3.1
+    env: PUPPET_VERSION="~> 4.0" CHECK=rubocop
+  - rvm: 2.3.1
+    env: PUPPET_VERSION="~> 4.0" CHECK=test
+  - rvm: 2.4.0-preview1
+    env: PUPPET_VERSION="~> 4.0" CHECK=test
   allow_failures:
-  - rvm: 2.3.0
-    env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes" CHECK=test
+    - rvm: 2.4.0-preview1
 Gemfile:
   required:
     ':test':
+      - gem: coveralls
+        ruby-operator: '>='
+        ruby-version: '2.0.0'
+      - gem: json_pure
+        version: '<= 2.0.1'
+        ruby-operator: '<'
+        ruby-version: '2.0.0'
       - gem: metadata-json-lint
+      - gem: mocha
+        version: '>= 1.2.1'
       - gem: puppet-blacksmith
-        git: https://github.com/voxpupuli/puppet-blacksmith.git
-      - gem: puppet-lint
-        git: https://github.com/rodjek/puppet-lint.git
       - gem: puppet-lint-absolute_classname-check
       - gem: puppet-lint-classes_and_types_beginning_with_digits-check
       - gem: puppet-lint-leading_zero-check
@@ -35,24 +42,30 @@ Gemfile:
       - gem: puppet-lint-unquoted_string-check
       - gem: puppet-lint-variable_contains_upcase
       - gem: puppet-lint-version_comparison-check
+      - gem: puppet-strings
+        version: '~> 0.99.0'
       - gem: puppetlabs_spec_helper
-      - gem: rake
-      - gem: rspec
+        version: '~> 1.2.2'
       - gem: rspec-puppet
-        git: https://github.com/rodjek/rspec-puppet.git
+        version: '~> 2.5'
       - gem: rspec-puppet-facts
       - gem: rspec-puppet-utils
-      - gem: rubocop
-        version: '~> 0.38'
+      - gem: rubocop-rspec
+        version: '~> 1.6'
+        ruby-operator: '>='
+        ruby-version: '2.3.0'
+      - gem: simplecov-console
+        ruby-operator: '>='
+        ruby-version: '2.0.0'
     ':development':
       - gem: guard-rake
       - gem: travis
       - gem: travis-lint
     ':system_tests':
-      - gem: beaker
       - gem: beaker-rspec
       - gem: beaker-puppet_install_helper
         require: false
+      - gem: serverspec
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
@@ -60,4 +73,9 @@ Rakefile:
   - 'disable_class_inherits_from_params_class'
   - 'disable_documentation'
   - 'disable_single_quote_string_with_variables'
+  default_enabled_rake_targets:
+  - 'metadata_lint'
+  - 'release_checks'
 ...
+
+# vim: syntax=yaml
