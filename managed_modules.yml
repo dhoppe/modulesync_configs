@@ -14,3 +14,6 @@
 - puppet-screen
 - puppet-ssh
 - puppet-vim
+...
+
+# vim: syntax=yaml

@@ -12,3 +12,5 @@ group :development do
 end
 
 gem 'modulesync'
+
+# vim: syntax=ruby

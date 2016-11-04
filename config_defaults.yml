@@ -61,3 +61,5 @@ Rakefile:
   - 'disable_documentation'
   - 'disable_single_quote_string_with_variables'
 ...
+
+# vim: syntax=yaml
