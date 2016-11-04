@@ -34,6 +34,8 @@ Gemfile:
       - gem: puppet-lint-unquoted_string-check
       - gem: puppet-lint-variable_contains_upcase
       - gem: puppet-lint-version_comparison-check
+      - gem: puppet-strings
+        git: https://github.com/puppetlabs/puppetlabs-strings.git
       - gem: puppetlabs_spec_helper
       - gem: rake
       - gem: rspec
