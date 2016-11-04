@@ -27,8 +27,6 @@ Gemfile:
       - gem: metadata-json-lint
       - gem: puppet-blacksmith
         git: https://github.com/voxpupuli/puppet-blacksmith.git
-      - gem: puppet-lint
-        git: https://github.com/rodjek/puppet-lint.git
       - gem: puppet-lint-absolute_classname-check
       - gem: puppet-lint-classes_and_types_beginning_with_digits-check
       - gem: puppet-lint-leading_zero-check
